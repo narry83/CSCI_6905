@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean){
         val correctAnswer = questionBank[currentIndex].answer
         val messageResId= if(userAnswer == correctAnswer){
-            R.string.correct_toast
+            "Correct!"
         }else{
             R.string.incorrect_toast
         }
