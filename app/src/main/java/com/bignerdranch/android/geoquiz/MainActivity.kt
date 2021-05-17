@@ -2,6 +2,7 @@ package com.bignerdranch.android.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+            .also { it.setGravity(Gravity.TOP, 0, 150) }
             .show()
     }
 
