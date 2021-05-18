@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         Question(R.string.question_asia, true))
 
     private var currentIndex = 0
+    private var correctIndex = 0
+    private var score = 0.0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         nextButton.setOnClickListener {
-            currentIndex = (currentIndex + 1) % questionBank.size
-            updateQuestion()
+                currentIndex = (currentIndex + 1) % questionBank.size
+                updateQuestion()
         }
 
         updateQuestion()
@@ -91,6 +93,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean){
         val correctAnswer = questionBank[currentIndex].answer
         val messageResId= if(userAnswer == correctAnswer){
+            correctIndex=correctIndex+1
             R.string.correct_toast
         }else{
             R.string.incorrect_toast
@@ -98,6 +101,13 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
             .show()
+
+        if (currentIndex == questionBank.size -1) {
+            score = (correctIndex*100.0/ questionBank.size)
+            val messageResId = "Your score is ${score} %"
+            Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 }
