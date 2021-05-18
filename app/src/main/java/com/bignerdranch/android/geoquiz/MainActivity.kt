@@ -40,10 +40,12 @@ class MainActivity : AppCompatActivity() {
 
         trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
+            trueButton.setEnabled(false)
         }
 
         falseButton.setOnClickListener { view: View ->
             checkAnswer(false)
+            falseButton.setEnabled(false)
         }
 
         nextButton.setOnClickListener {
@@ -82,6 +84,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
+        trueButton.setEnabled(true)
+        falseButton.setEnabled(true)
     }
 
     private fun checkAnswer(userAnswer: Boolean){
